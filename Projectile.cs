@@ -6,6 +6,8 @@ public class Projectile : MonoBehaviour
 {
     public float speed = 10f;
 
+    public GameObject explosion;
+
     void Start()
     {
         Destroy(gameObject, 1f);
@@ -20,6 +22,8 @@ public class Projectile : MonoBehaviour
     {
         if (collision.tag == "Obstacle")
         {
+            GameObject effect = Instantiate(explosion, transform.position, transform.rotation);
+            Destroy(effect, 5);
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }
